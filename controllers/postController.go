@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/jparker15/Go-CRUD-API/initializers"
 	"github.com/jparker15/Go-CRUD-API/models"
@@ -84,4 +86,16 @@ func PostsUpdate(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"post": post,
 	})
+}
+
+func PostsDelete(c *gin.Context) {
+	//Get theID off the URL
+
+	id := c.Param("id")
+	//Delete the posts
+	initializers.DB.Delete(&models.Post{}, id)
+	// Respond
+	fmt.Println("worked")
+	c.Status(200)
+
 }
