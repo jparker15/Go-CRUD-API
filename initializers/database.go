@@ -14,6 +14,7 @@ func ConnectToDB() {
 
 	var err error
 
+	//dsn := "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable" PostgreSQL
 	dsn := os.Getenv("DB_URL")
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
